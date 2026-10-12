@@ -11,14 +11,14 @@ The first page lets users choose between:
 
 ## Live website
 
-<https://kungnapatkrit.github.io/ict-smo-budget/>
+<https://outoft3n.github.io/ict-smo-budget/>
 
 ## Run it
 
 Clone the repository, enter its folder, and run:
 
 ```bash
-git clone https://github.com/KungNapatkrit/ict-smo-budget.git
+git clone https://github.com/outoft3n/ict-smo-budget.git
 cd ict-smo-budget
 python3 server.py
 ```
