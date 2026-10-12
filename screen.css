@@ -1,0 +1,134 @@
+/* Screen chrome only. Keep document typography, geometry and print rules in
+   their original stylesheets. The media guard also protects direct imports. */
+@media screen {
+  body {
+    background: radial-gradient(ellipse at top left, #e3efeb 0, transparent 55%), #f3f5f3;
+  }
+
+  .app-header {
+    padding: 22px 28px;
+    background: #123f40;
+    border-bottom: 3px solid #b9d6b7;
+    box-shadow: 0 4px 20px #183b3b14;
+    flex-wrap: wrap;
+  }
+  .app-header h1 { font-size: 20px; line-height: 1.35; letter-spacing: -.3px; }
+  .app-header p { margin-top: 6px; line-height: 1.5; color: #d7e7e5; opacity: 1; }
+  .actions { align-items: center; gap: 8px; }
+  .actions .file-button { margin: 0; }
+  .actions button, .actions .file-button { font-size: 13px; }
+  .actions .primary { background: #d6e8b9; color: #173b33; border-color: #d6e8b9; }
+
+  .workspace {
+    grid-template-columns: minmax(340px, 420px) minmax(0, 1fr);
+    gap: 24px;
+    padding: 28px;
+    max-width: 1600px;
+  }
+  .workspace > .panel { min-width: 0; width: 100%; }
+  .panel { border-color: #dbe4df; border-radius: 16px; box-shadow: 0 6px 24px #223e3210; }
+  .panel-title {
+    padding: 20px 24px;
+    color: #214c45;
+    background: #fcfdfb;
+    border-bottom-color: #e2e9e4;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  .form-body { padding: 24px; }
+  .form-body fieldset { min-width: 0; margin-bottom: 28px; }
+  .form-body legend { margin-bottom: 16px; color: #214c45; font-size: 14px; }
+  .form-body label { margin-bottom: 14px; line-height: 1.5; color: #45594f; }
+  .form-body .grid-2 { gap: 12px; }
+  .form-body input:not([type="radio"]):not([type="checkbox"]),
+  .form-body textarea, .form-body select {
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #cbd8d0;
+    border-radius: 8px;
+    background: #fcfdfc;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .form-body input:hover, .form-body textarea:hover, .form-body select:hover { border-color: #87a99a; }
+  .form-body input:focus, .form-body textarea:focus, .form-body select:focus {
+    outline: 2px solid #087a7c;
+    outline-offset: 2px;
+    border-color: #087a7c;
+    box-shadow: 0 0 0 5px #087a7c0a;
+  }
+  .form-body input[type="radio"], .form-body input[type="checkbox"] { accent-color: #087a7c; flex-shrink: 0; }
+  .form-body .radio-group, .form-body .check-field { padding: 8px 0; }
+  .person-card, .activity-card, .objective-card {
+    padding: 16px;
+    margin-bottom: 14px;
+    background: #f5f8f5;
+    border-color: #e0e8e1;
+    border-radius: 10px;
+  }
+  .person-card h3, .activity-card h3, .objective-card h3 { margin-bottom: 14px; color: #355b4c; }
+  .form-footer { padding-top: 12px; border-top: 1px solid #e2e9e4; }
+  .screen-note { line-height: 1.65; color: #61736a; }
+  .app-header button, .app-header .file-button,
+  .form-body button {
+    min-height: 42px;
+    border-radius: 8px;
+    padding: 10px 14px;
+    line-height: 1.3;
+    transition: background .15s, box-shadow .15s;
+  }
+  .app-header button:focus-visible, .app-header .file-button:focus-within,
+  .form-body button:focus-visible { outline: 3px solid #75b6b1; outline-offset: 3px; }
+  /* Preserve native file-input keyboard access while keeping the label UI. */
+  .file-button { position: relative; }
+  .file-button input {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .preview-wrap { padding: 28px; background: #e6ebe7; scrollbar-color: #96aaa0 #e6ebe7; }
+
+  /* Home page */
+  body > main:not(.workspace) { width: min(1040px, calc(100% - 48px)); padding: 56px 0; }
+  .brand { margin-bottom: 28px; mix-blend-mode: multiply; }
+  main:not(.workspace) > h1 { color: #173f38; letter-spacing: -1.4px; font-size: clamp(30px, 4vw, 46px); }
+  .intro { margin: 16px auto 40px; line-height: 1.6; color: #5d7167; }
+  .choices { gap: 20px; }
+  .choice { position: relative; padding: 28px 30px; min-height: 260px; border-color: #d6e1d9; border-radius: 18px; box-shadow: 0 4px 18px #1e443008; }
+  .choice-number { width: 40px; height: 40px; border-radius: 12px; background: #e8f1ea; color: #315b45; font-size: 14px; }
+  .choice h2 { margin-top: 22px; font-size: 22px; letter-spacing: -.4px; color: #204a3f; }
+  .choice p { font-size: 14px; line-height: 1.7; max-width: 42ch; color: #5f7067; }
+  .choice .open { padding-top: 24px; font-size: 13px; color: #17685c; }
+  .choice:hover { border-color: #75a38a; box-shadow: 0 12px 30px #254e3912; }
+  .choice:focus-visible { outline: 3px solid #087a7c; outline-offset: 4px; }
+
+  @media (max-width: 1120px) {
+    .workspace { grid-template-columns: minmax(0, 1fr); max-width: 960px; }
+    .panel.form-panel { max-width: none; margin: 0; }
+  }
+  @media (max-width: 600px) {
+    .app-header { position: static; padding: 20px 16px; align-items: stretch; flex-direction: column; }
+    .app-header h1 { font-size: 18px; }
+    .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .actions .primary { grid-column: 1 / -1; }
+    .actions .file-button { text-align: center; }
+    .workspace { padding: 16px 12px; gap: 20px; }
+    .form-body, .panel-title { padding: 20px; }
+    .form-body .grid-2 { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .preview-wrap { padding: 16px; }
+    body > main:not(.workspace) { width: calc(100% - 32px); padding: 32px 0; }
+    .intro { margin-bottom: 28px; }
+    .choice { min-height: 230px; padding: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .choice, .form-body input, .form-body textarea, .form-body select,
+    .app-header button, .app-header .file-button, .form-body button { transition: none; }
+    .choice:hover, .choice:focus-visible { transform: none; }
+  }
+}
