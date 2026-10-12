@@ -49,3 +49,13 @@ python3 server.py --template "template.dotx"
 - Local-only server bound to `127.0.0.1`
 
 For the most consistent output, choose A4 paper, 100% scale, and enable background graphics in the browser print dialog.
+
+## Screen styling
+
+All five pages load `screen.css` with `media="screen"`. This shared stylesheet
+styles navigation, form controls, cards, and responsive layouts. Keep visual
+changes here scoped to the screen interface; official document styles, bundled
+THSarabunPSK fonts, A4 dimensions, and print rules remain in their original files.
+
+The preserved starting point is the `baseline-2026-10-12` tag. The `css-make-up`
+branch contains the screen styling refresh.
