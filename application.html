@@ -77,12 +77,17 @@
 
     @media (max-width:1120px) { .workspace { grid-template-columns: 1fr; } .panel.form-panel { max-width:760px; margin:0 auto; } }
     @media print {
-      @page { size: A4 portrait; margin: 12mm; }
+      /* Keep the full application (including signatures) on its intended A4 page
+         when the browser's optional print header/footer is enabled. */
+      @page { size: A4 portrait; margin: 4mm; }
       html, body { width:100%; min-width:0; margin:0; background:white; }
       .no-print, .form-panel { display:none !important; }
       .workspace { display:block; width:100%; max-width:100%; min-width:0; margin:0; padding:0; }
       .panel, .preview-wrap { width:100%; max-width:100%; min-width:0; margin:0; padding:0; border:0; box-shadow:none; overflow:visible; background:white; }
       .paper { width:100%; max-width:100%; min-width:0; min-height:0; margin:0; padding:0; box-shadow:none; }
+      .application-page .signature-block { margin-top: 2mm; }
+      .application-page .signature { min-height: 28mm; }
+      .application-page .signature-line { margin-top: 6mm; }
       .certificate-page { break-before:page; page-break-before:always; }
       .document-table { width:calc(100% - 2mm) !important; max-width:calc(100% - 2mm); min-width:0; margin-left:1mm; margin-right:1mm; }
       .document-table th, .document-table td { min-width:0; overflow-wrap:anywhere; word-break:break-word; }
@@ -135,8 +140,8 @@
           <legend>Approval names</legend>
           <div class="grid-2">
             <label>Club advisor<input name="clubAdvisorName" placeholder="Name-Surname"></label>
-            <label>ICT Student Association president<input name="associationPresidentName" value="Natnicha Uppariputthangkul"></label>
-            <label>Board chairperson<input name="chairpersonName" value="Asst. Prof. Dr. Thanapon Noraset"></label>
+            <label>ICT Student Association president<input name="associationPresidentName" value="Natnicha Uppariputthangkul" readonly></label>
+            <label>Board chairperson<input name="chairpersonName" value="Asst. Prof. Dr. Thanapon Noraset" readonly></label>
           </div>
         </fieldset>
 
@@ -281,7 +286,7 @@
 
     function loadData(data) {
       suppressResetHandler = true; form.reset(); suppressResetHandler = false;
-      ["academicYear","clubName","advisors","clubAdvisorName","associationPresidentName","chairpersonName"].forEach(key => { if (data[key] !== undefined && form.elements[key]) form.elements[key].value = data[key]; });
+      ["academicYear","clubName","advisors","clubAdvisorName"].forEach(key => { if (data[key] !== undefined && form.elements[key]) form.elements[key].value = data[key]; });
       if (data.applicationType) { const choice=form.querySelector(`[name="applicationType"][value="${data.applicationType}"]`); if (choice) choice.checked=true; }
       (data.committee || []).forEach((person,index) => { if (index >= roles.length) return; form.elements[`committee_${index}_id`].value=person.studentId||""; form.elements[`committee_${index}_name`].value=person.name||""; form.elements[`committee_${index}_surname`].value=person.surname||""; });
       ["annualReportSubmitted","qualificationRegistered","qualificationGpa","qualificationProbation","qualificationPunishment","qualificationMembership"].forEach(key => { form.elements[key].checked=Boolean(data[key]); });

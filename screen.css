@@ -73,6 +73,8 @@
     transition: border-color .15s, box-shadow .15s;
   }
   .form-body input:hover, .form-body textarea:hover, .form-body select:hover { border-color: #6f9f90; }
+  .form-body input[readonly] { background: #edf4ef; color: #24483e; cursor: default; }
+  .form-body input[readonly]:hover { border-color: #cbd8d0; }
   .form-body input:focus, .form-body textarea:focus, .form-body select:focus {
     outline: 2px solid #087a7c;
     outline-offset: 2px;

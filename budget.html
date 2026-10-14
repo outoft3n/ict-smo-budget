@@ -259,9 +259,9 @@
             <!-- <label>Club president date<input name="clubPresidentDate" type="date"></label> -->
             <label>Club advisor name<input name="clubAdvisorName" placeholder="Name-Surname"></label>
             <!-- <label>Club advisor date<input name="clubAdvisorDate" type="date"></label> -->
-            <label>ICT Student Association president<input name="associationPresidentName" value="Natnicha Uppariputthangkul"></label>
+            <label>ICT Student Association president<input name="associationPresidentName" value="Natnicha Uppariputthangkul" readonly></label>
             <!-- <label>Association president date<input name="associationPresidentDate" type="date"></label> -->
-            <label>Board chairperson<input name="chairpersonName" value="Asst. Prof. Dr. Thanapon Noraset"></label>
+            <label>Board chairperson<input name="chairpersonName" value="Asst. Prof. Dr. Thanapon Noraset" readonly></label>
             <!-- <label>Chairperson date<input name="chairpersonDate" type="date"></label> -->
           </div>
         </fieldset>
@@ -500,7 +500,7 @@
       suppressResetHandler = true;
       form.reset();
       suppressResetHandler = false;
-      const simpleFields = ["fiscalYear", "clubName", "advisors", "clubPresidentName", "clubPresidentDate", "clubAdvisorName", "clubAdvisorDate", "associationPresidentName", "associationPresidentDate", "chairpersonName", "chairpersonDate"];
+      const simpleFields = ["fiscalYear", "clubName", "advisors", "clubPresidentName", "clubPresidentDate", "clubAdvisorName", "clubAdvisorDate", "associationPresidentDate", "chairpersonDate"];
       simpleFields.forEach(key => { if (data[key] !== undefined && form.elements[key]) form.elements[key].value = data[key]; });
       (data.committee || []).forEach((person, index) => {
         if (index >= roles.length) return;
